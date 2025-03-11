@@ -1,0 +1,21 @@
+<?php
+// Load the XML file into a SimpleXML object
+$xml = simplexml_load_file("book.xml");
+if ($xml === false) {
+// Error handling if the XML file cannot be loaded
+echo "Failed to load XML file.";
+foreach(libxml_get_errors() as $error) {
+echo "<br>", $error->message;
+}
+exit;
+}
+// Display the XML contents
+foreach ($xml->book as $book) {
+echo "Book Number: " . $book->bookno . "<br>";
+echo "Book Name: " . $book->bookname . "<br>";
+echo "Author Name: " . $book->authorname . "<br>";
+echo "Price: " . $book->price . "<br>";
+echo "Year: " . $book->year . "<br>";
+echo "<hr>";
+}
+?>
