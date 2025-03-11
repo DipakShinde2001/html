@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJAX Name Validation</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+body {
+font-family: Arial, sans-serif;
+margin: 20px;
+}
+input {
+padding: 8px;
+margin-top: 10px;
+width: 300px;
+}
+p {
+margin-top: 10px;
+font-size: 18px;
+}
+</style>
+</head>
+<body>
+<h2>Type Your Name</h2>
+<input type="text" id="nameInput" placeholder="Enter your name">
+<p id="responseMessage">Stranger, please tell me your name!</p>
+<script>
+$(document).ready(function () {
+const knownNames = ["Rohit", "Virat", "Dhoni", "Ashwin", "Harbhajan"];
+$("#nameInput").on("keyup", function () {
+const name = $(this).val().trim();
+setTimeout(() => {
+if (name === "") {
+$("#responseMessage").text("Stranger, please tell me your name!");
+} else if (knownNames.includes(name)) {
+$("#responseMessage").text(`Hello, master ${name}!`);
+} else {
+$("#responseMessage").text(`${name}, I don’t know you!`);
+}
+}, 300);
+});
+});
+</script>
+</body>
+</html>
